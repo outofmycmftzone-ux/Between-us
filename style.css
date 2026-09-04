@@ -25,13 +25,19 @@ body {
 }
 
 button,
-textarea {
+textarea,
+input {
   font: inherit;
 }
 
 button {
   border: 0;
   cursor: pointer;
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.6;
 }
 
 #app {
@@ -137,6 +143,46 @@ button {
   line-height: 1.6;
 }
 
+.setup-form {
+  width: 100%;
+  max-width: 480px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+.setup-form label {
+  display: block;
+  margin: 18px 4px 8px;
+  color: var(--muted);
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.setup-form input {
+  width: 100%;
+  min-height: 58px;
+  padding: 16px;
+  border-radius: 18px;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text);
+  outline: none;
+}
+
+.setup-form input::placeholder {
+  color: #807487;
+}
+
+.setup-form input:focus {
+  border-color: var(--accent);
+}
+
+.setup-form .primary-button {
+  margin-top: 28px;
+}
+
 .category-grid {
   width: 100%;
   max-width: 700px;
@@ -204,6 +250,15 @@ button {
   padding: 30px 0;
 }
 
+.turn-label {
+  text-align: center;
+  color: var(--text);
+  font-size: 1.15rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  margin-bottom: 10px;
+}
+
 .category-label {
   text-align: center;
   color: var(--accent);
@@ -238,7 +293,7 @@ button {
   font-weight: 700;
 }
 
-.answer-area,
+.answer-stage,
 .reveal-area {
   margin-top: 20px;
 }
@@ -272,9 +327,119 @@ textarea:focus {
   border-color: var(--accent);
 }
 
-.answer-area .primary-button,
+.answer-stage .primary-button,
 .reveal-area .primary-button {
   margin-top: 12px;
+}
+
+.pass-message {
+  text-align: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 26px 20px;
+  margin-bottom: 16px;
+}
+
+.pass-icon {
+  font-size: 2.2rem;
+  margin-bottom: 12px;
+}
+
+.pass-message h3 {
+  font-size: 1.35rem;
+  margin-bottom: 8px;
+}
+
+.pass-message p {
+  color: var(--muted);
+  line-height: 1.5;
+}
+
+.answer-reveal {
+  display: grid;
+  gap: 12px;
+}
+
+.answer-box {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  padding: 20px;
+}
+
+.answer-box span {
+  display: block;
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.answer-box p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.accuracy-section {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.accuracy-section > p {
+  color: var(--muted);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.accuracy-buttons {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.accuracy-button {
+  min-height: 54px;
+  padding: 12px;
+  border-radius: 16px;
+  background: var(--surface-light);
+  border: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 700;
+}
+
+.accuracy-button:active {
+  transform: scale(0.97);
+}
+
+.discussion-area {
+  margin-top: 22px;
+  padding: 22px;
+  border-radius: 22px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.discussion-prompt {
+  color: var(--accent);
+  font-size: 1rem;
+  font-weight: 900;
+  margin-bottom: 8px;
+}
+
+.discussion-area p {
+  color: var(--muted);
+  line-height: 1.5;
+  margin-bottom: 16px;
+}
+
+.discussion-area .primary-button {
+  margin-top: 0;
 }
 
 .hidden {
@@ -329,5 +494,9 @@ textarea:focus {
 
   .logo {
     letter-spacing: 0.08em;
+  }
+
+  .accuracy-buttons {
+    grid-template-columns: 1fr;
   }
 }
