@@ -1,25 +1,47 @@
 const homeScreen = document.getElementById("homeScreen");
+const setupScreen = document.getElementById("setupScreen");
 const categoryScreen = document.getElementById("categoryScreen");
 const gameScreen = document.getElementById("gameScreen");
 const learnedScreen = document.getElementById("learnedScreen");
 
 const playButton = document.getElementById("playButton");
 const learnedButton = document.getElementById("learnedButton");
+const setupBackButton = document.getElementById("setupBackButton");
 const categoryBackButton = document.getElementById("categoryBackButton");
 const gameBackButton = document.getElementById("gameBackButton");
 const learnedBackButton = document.getElementById("learnedBackButton");
 
+const playerOneInput = document.getElementById("playerOneInput");
+const playerTwoInput = document.getElementById("playerTwoInput");
+const startGameButton = document.getElementById("startGameButton");
+
 const categoryGrid = document.getElementById("categoryGrid");
 const questionCounter = document.getElementById("questionCounter");
+const turnLabel = document.getElementById("turnLabel");
 const categoryLabel = document.getElementById("categoryLabel");
 const difficultyLabel = document.getElementById("difficultyLabel");
 const questionText = document.getElementById("questionText");
 
+const answerStage = document.getElementById("answerStage");
+const answerInstruction = document.getElementById("answerInstruction");
 const answerInput = document.getElementById("answerInput");
-const partnerAnswerInput = document.getElementById("partnerAnswerInput");
+const lockAnswerButton = document.getElementById("lockAnswerButton");
+
+const guessStage = document.getElementById("guessStage");
+const guessPlayerLabel = document.getElementById("guessPlayerLabel");
+const guessInstruction = document.getElementById("guessInstruction");
+const guessInput = document.getElementById("guessInput");
 const revealButton = document.getElementById("revealButton");
-const submitAnswerButton = document.getElementById("submitAnswerButton");
-const revealArea = document.getElementById("revealArea");
+
+const revealStage = document.getElementById("revealStage");
+const answerPlayerName = document.getElementById("answerPlayerName");
+const originalAnswer = document.getElementById("originalAnswer");
+const guessPlayerName = document.getElementById("guessPlayerName");
+const partnerGuess = document.getElementById("partnerGuess");
+const accuracyButtons = document.querySelectorAll(".accuracy-button");
+const discussionArea = document.getElementById("discussionArea");
+const nextQuestionButton = document.getElementById("nextQuestionButton");
+
 const learnedList = document.getElementById("learnedList");
 
 let questions = [];
@@ -28,54 +50,50 @@ let currentQuestionIndex = 0;
 let currentQuestion = null;
 let selectedCategory = null;
 
+let players = {
+  one: "",
+  two: ""
+};
+
+let answeringPlayer = 0;
+let guessingPlayer = 1;
+
 const categoryInfo = {
   "How Well Do You Know Me?": {
-    icon: "🧠",
-    description: "The things you think you know."
+    icon: "🧠"
   },
   "You've Been Watching Me": {
-    icon: "👀",
-    description: "The little things you've noticed."
+    icon: "👀"
   },
   "Deep Cuts & Memories": {
-    icon: "🕰️",
-    description: "The memories buried in 16 years."
+    icon: "🕰️"
   },
   "What Would I Do?": {
-    icon: "🎭",
-    description: "Predict what your partner would choose."
+    icon: "🎭"
   },
   "You Know Me Better Than I Know Myself": {
-    icon: "🫣",
-    description: "Things they might know about you better than you do."
+    icon: "🫣"
   },
   "The Little Things": {
-    icon: "❤️",
-    description: "Small things that say a lot."
+    icon: "❤️"
   },
   "Before Us": {
-    icon: "💔",
-    description: "The experiences that shaped who you are."
+    icon: "💔"
   },
   "Intimacy": {
-    icon: "🔥",
-    description: "Attraction, chemistry and connection."
+    icon: "🔥"
   },
   "Spicy": {
-    icon: "😈",
-    description: "The questions that turn up the heat."
+    icon: "😈"
   },
   "Our Future": {
-    icon: "🌱",
-    description: "Where you think you're headed together."
+    icon: "🌱"
   },
   "Us Being Us": {
-    icon: "😂",
-    description: "The weirdness that makes you two."
+    icon: "😂"
   },
   "Conversation": {
-    icon: "💬",
-    description: "Questions worth actually talking about."
+    icon: "💬"
   }
 };
 
@@ -88,7 +106,7 @@ const difficultyNames = {
 };
 
 function showScreen(screen) {
-  [homeScreen, categoryScreen, gameScreen, learnedScreen].forEach(item => {
+  [homeScreen, setupScreen, categoryScreen, gameScreen, learnedScreen].forEach(item => {
     item.classList.remove("active");
   });
 
@@ -122,8 +140,7 @@ function buildCategories() {
 
   categories.forEach(category => {
     const info = categoryInfo[category] || {
-      icon: "💭",
-      description: "Questions designed to spark conversation."
+      icon: "💭"
     };
 
     const count = questions.filter(question => question.category === category).length;
@@ -153,9 +170,15 @@ function startCategory(category) {
     .sort(() => Math.random() - 0.5);
 
   currentQuestionIndex = 0;
+  answeringPlayer = 0;
+  guessingPlayer = 1;
 
   showScreen(gameScreen);
   showQuestion();
+}
+
+function getPlayerName(playerIndex) {
+  return playerIndex === 0 ? players.one : players.two;
 }
 
 function showQuestion() {
@@ -166,54 +189,98 @@ function showQuestion() {
     return;
   }
 
+  const answerer = getPlayerName(answeringPlayer);
+  const guesser = getPlayerName(guessingPlayer);
+
+  turnLabel.textContent = `${answerer}'S TURN`;
   categoryLabel.textContent = currentQuestion.category;
   difficultyLabel.textContent = `Level ${currentQuestion.difficulty} • ${difficultyNames[currentQuestion.difficulty] || ""}`;
   questionText.textContent = currentQuestion.question;
   questionCounter.textContent = `${currentQuestionIndex + 1} / ${currentQuestions.length}`;
 
-  answerInput.value = "";
-  partnerAnswerInput.value = "";
+  answerInstruction.textContent = `${answerer}, answer honestly. Your partner shouldn't see your answer.`;
 
-  revealArea.classList.add("hidden");
+  answerInput.value = "";
+  guessInput.value = "";
+
+  guessPlayerLabel.textContent = `${guesser}, it's your turn`;
+  guessInstruction.textContent = `Try to guess exactly what ${answerer} answered.`;
+
+  answerStage.classList.remove("hidden");
+  guessStage.classList.add("hidden");
+  revealStage.classList.add("hidden");
+  discussionArea.classList.add("hidden");
+
   answerInput.disabled = false;
+  lockAnswerButton.disabled = false;
+  guessInput.disabled = false;
   revealButton.disabled = false;
+
+  answerInput.focus();
 }
 
-function revealAnswerArea() {
+function lockAnswer() {
   if (!answerInput.value.trim()) {
     answerInput.focus();
     return;
   }
 
-  answerInput.disabled = true;
-  revealButton.disabled = true;
-  revealArea.classList.remove("hidden");
+  answerStage.classList.add("hidden");
+  guessStage.classList.remove("hidden");
 
-  partnerAnswerInput.focus();
+  guessInput.value = "";
+  guessInput.focus();
 }
 
-function saveLearnedAnswer() {
-  const guess = answerInput.value.trim();
-  const actualAnswer = partnerAnswerInput.value.trim();
-
-  if (!actualAnswer) {
-    partnerAnswerInput.focus();
+function revealAnswers() {
+  if (!guessInput.value.trim()) {
+    guessInput.focus();
     return;
   }
 
+  answerStage.classList.add("hidden");
+  guessStage.classList.add("hidden");
+  revealStage.classList.remove("hidden");
+
+  answerPlayerName.textContent = getPlayerName(answeringPlayer);
+  originalAnswer.textContent = answerInput.value.trim();
+
+  guessPlayerName.textContent = `${getPlayerName(guessingPlayer)} guessed`;
+  partnerGuess.textContent = guessInput.value.trim();
+
+  discussionArea.classList.add("hidden");
+}
+
+function saveResult(score) {
   const learned = JSON.parse(localStorage.getItem("betweenUsLearned") || "[]");
 
   learned.unshift({
     question: currentQuestion.question,
-    guess,
-    answer: actualAnswer,
+    answerPlayer: getPlayerName(answeringPlayer),
+    guessPlayer: getPlayerName(guessingPlayer),
+    answer: answerInput.value.trim(),
+    guess: guessInput.value.trim(),
+    score,
     category: currentQuestion.category,
     date: new Date().toISOString()
   });
 
   localStorage.setItem("betweenUsLearned", JSON.stringify(learned));
 
+  accuracyButtons.forEach(button => {
+    button.disabled = true;
+  });
+
+  discussionArea.classList.remove("hidden");
+}
+
+function nextQuestion() {
   currentQuestionIndex++;
+
+  const previousAnsweringPlayer = answeringPlayer;
+
+  answeringPlayer = guessingPlayer;
+  guessingPlayer = previousAnsweringPlayer;
 
   if (currentQuestionIndex >= currentQuestions.length) {
     showScreen(categoryScreen);
@@ -245,8 +312,12 @@ function renderLearned() {
     element.innerHTML = `
       <div class="learned-question">${escapeHtml(item.question)}</div>
       <div class="learned-answer">
-        <strong>Their answer:</strong><br>
+        <strong>${escapeHtml(item.answerPlayer)}'s answer:</strong><br>
         ${escapeHtml(item.answer)}
+      </div>
+      <div class="learned-answer">
+        <strong>${escapeHtml(item.guessPlayer)}'s guess:</strong><br>
+        ${escapeHtml(item.guess)}
       </div>
     `;
 
@@ -261,7 +332,32 @@ function escapeHtml(value) {
 }
 
 playButton.addEventListener("click", () => {
+  showScreen(setupScreen);
+  playerOneInput.focus();
+});
+
+startGameButton.addEventListener("click", () => {
+  const playerOne = playerOneInput.value.trim();
+  const playerTwo = playerTwoInput.value.trim();
+
+  if (!playerOne) {
+    playerOneInput.focus();
+    return;
+  }
+
+  if (!playerTwo) {
+    playerTwoInput.focus();
+    return;
+  }
+
+  players.one = playerOne;
+  players.two = playerTwo;
+
   showScreen(categoryScreen);
+});
+
+setupBackButton.addEventListener("click", () => {
+  showScreen(homeScreen);
 });
 
 learnedButton.addEventListener("click", () => {
@@ -281,9 +377,17 @@ learnedBackButton.addEventListener("click", () => {
   showScreen(homeScreen);
 });
 
-revealButton.addEventListener("click", revealAnswerArea);
+lockAnswerButton.addEventListener("click", lockAnswer);
 
-submitAnswerButton.addEventListener("click", saveLearnedAnswer);
+revealButton.addEventListener("click", revealAnswers);
+
+accuracyButtons.forEach(button => {
+  button.addEventListener("click", () => {
+    saveResult(Number(button.dataset.score));
+  });
+});
+
+nextQuestionButton.addEventListener("click", nextQuestion);
 
 loadQuestions();
 
