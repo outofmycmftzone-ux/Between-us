@@ -2,6 +2,7 @@ const homeScreen = document.getElementById("homeScreen");
 const setupScreen = document.getElementById("setupScreen");
 const categoryScreen = document.getElementById("categoryScreen");
 const gameScreen = document.getElementById("gameScreen");
+const resultsScreen = document.getElementById("resultsScreen");
 const learnedScreen = document.getElementById("learnedScreen");
 
 const playButton = document.getElementById("playButton");
@@ -17,6 +18,7 @@ const startGameButton = document.getElementById("startGameButton");
 
 const categoryGrid = document.getElementById("categoryGrid");
 const questionCounter = document.getElementById("questionCounter");
+const scoreDisplay = document.getElementById("scoreDisplay");
 const turnLabel = document.getElementById("turnLabel");
 const categoryLabel = document.getElementById("categoryLabel");
 const difficultyLabel = document.getElementById("difficultyLabel");
@@ -42,6 +44,16 @@ const accuracyButtons = document.querySelectorAll(".accuracy-button");
 const discussionArea = document.getElementById("discussionArea");
 const nextQuestionButton = document.getElementById("nextQuestionButton");
 
+const resultsTitle = document.getElementById("resultsTitle");
+const resultsPercentage = document.getElementById("resultsPercentage");
+const resultsMessage = document.getElementById("resultsMessage");
+const resultsPlayerOneName = document.getElementById("resultsPlayerOneName");
+const resultsPlayerTwoName = document.getElementById("resultsPlayerTwoName");
+const resultsPlayerOneScore = document.getElementById("resultsPlayerOneScore");
+const resultsPlayerTwoScore = document.getElementById("resultsPlayerTwoScore");
+const resultsContinueButton = document.getElementById("resultsContinueButton");
+const resultsHomeButton = document.getElementById("resultsHomeButton");
+
 const learnedList = document.getElementById("learnedList");
 
 let questions = [];
@@ -58,43 +70,32 @@ let players = {
 let answeringPlayer = 0;
 let guessingPlayer = 1;
 
+let scores = {
+  one: 0,
+  two: 0
+};
+
+let answeredCounts = {
+  one: 0,
+  two: 0
+};
+
+let totalPoints = 0;
+let possiblePoints = 0;
+
 const categoryInfo = {
-  "How Well Do You Know Me?": {
-    icon: "🧠"
-  },
-  "You've Been Watching Me": {
-    icon: "👀"
-  },
-  "Deep Cuts & Memories": {
-    icon: "🕰️"
-  },
-  "What Would I Do?": {
-    icon: "🎭"
-  },
-  "You Know Me Better Than I Know Myself": {
-    icon: "🫣"
-  },
-  "The Little Things": {
-    icon: "❤️"
-  },
-  "Before Us": {
-    icon: "💔"
-  },
-  "Intimacy": {
-    icon: "🔥"
-  },
-  "Spicy": {
-    icon: "😈"
-  },
-  "Our Future": {
-    icon: "🌱"
-  },
-  "Us Being Us": {
-    icon: "😂"
-  },
-  "Conversation": {
-    icon: "💬"
-  }
+  "How Well Do You Know Me?": { icon: "🧠" },
+  "You've Been Watching Me": { icon: "👀" },
+  "Deep Cuts & Memories": { icon: "🕰️" },
+  "What Would I Do?": { icon: "🎭" },
+  "You Know Me Better Than I Know Myself": { icon: "🫣" },
+  "The Little Things": { icon: "❤️" },
+  "Before Us": { icon: "💔" },
+  "Intimacy": { icon: "🔥" },
+  "Spicy": { icon: "😈" },
+  "Our Future": { icon: "🌱" },
+  "Us Being Us": { icon: "😂" },
+  "Conversation": { icon: "💬" }
 };
 
 const difficultyNames = {
@@ -106,7 +107,7 @@ const difficultyNames = {
 };
 
 function showScreen(screen) {
-  [homeScreen, setupScreen, categoryScreen, gameScreen, learnedScreen].forEach(item => {
+  [homeScreen, setupScreen, categoryScreen, gameScreen, resultsScreen, learnedScreen].forEach(item => {
     item.classList.remove("active");
   });
 
@@ -170,8 +171,16 @@ function startCategory(category) {
     .sort(() => Math.random() - 0.5);
 
   currentQuestionIndex = 0;
+
   answeringPlayer = 0;
   guessingPlayer = 1;
+
+  scores.one = 0;
+  scores.two = 0;
+  answeredCounts.one = 0;
+  answeredCounts.two = 0;
+  totalPoints = 0;
+  possiblePoints = currentQuestions.length * 3;
 
   showScreen(gameScreen);
   showQuestion();
@@ -181,11 +190,23 @@ function getPlayerName(playerIndex) {
   return playerIndex === 0 ? players.one : players.two;
 }
 
+function getPlayerKey(playerIndex) {
+  return playerIndex === 0 ? "one" : "two";
+}
+
+function updateScoreDisplay() {
+  const percentage = possiblePoints
+    ? Math.round((totalPoints / possiblePoints) * 100)
+    : 0;
+
+  scoreDisplay.textContent = `${percentage}%`;
+}
+
 function showQuestion() {
   currentQuestion = currentQuestions[currentQuestionIndex];
 
   if (!currentQuestion) {
-    showScreen(categoryScreen);
+    showResults();
     return;
   }
 
@@ -215,6 +236,12 @@ function showQuestion() {
   lockAnswerButton.disabled = false;
   guessInput.disabled = false;
   revealButton.disabled = false;
+
+  accuracyButtons.forEach(button => {
+    button.disabled = false;
+  });
+
+  updateScoreDisplay();
 
   answerInput.focus();
 }
@@ -252,6 +279,14 @@ function revealAnswers() {
 }
 
 function saveResult(score) {
+  const answererKey = getPlayerKey(answeringPlayer);
+  const guesserKey = getPlayerKey(guessingPlayer);
+
+  scores[guesserKey] += score;
+  answeredCounts[guesserKey]++;
+
+  totalPoints += score;
+
   const learned = JSON.parse(localStorage.getItem("betweenUsLearned") || "[]");
 
   learned.unshift({
@@ -271,6 +306,8 @@ function saveResult(score) {
     button.disabled = true;
   });
 
+  updateScoreDisplay();
+
   discussionArea.classList.remove("hidden");
 }
 
@@ -283,11 +320,55 @@ function nextQuestion() {
   guessingPlayer = previousAnsweringPlayer;
 
   if (currentQuestionIndex >= currentQuestions.length) {
-    showScreen(categoryScreen);
+    showResults();
     return;
   }
 
   showQuestion();
+}
+
+function showResults() {
+  const percentage = possiblePoints
+    ? Math.round((totalPoints / possiblePoints) * 100)
+    : 0;
+
+  if (percentage >= 90) {
+    resultsTitle.textContent = "You REALLY Know Each Other";
+    resultsMessage.textContent = "That's seriously impressive. After all those questions, you two know each other incredibly well.";
+  } else if (percentage >= 75) {
+    resultsTitle.textContent = "You Know Each Other Damn Well";
+    resultsMessage.textContent = "You picked up on a lot of the little things. There aren't many secrets between you.";
+  } else if (percentage >= 60) {
+    resultsTitle.textContent = "Pretty Damn Good";
+    resultsMessage.textContent = "You know each other well, but there are still a few surprises hiding in there.";
+  } else if (percentage >= 40) {
+    resultsTitle.textContent = "You've Got Some Learning To Do";
+    resultsMessage.textContent = "You know the basics. The interesting stuff is clearly still being discovered.";
+  } else {
+    resultsTitle.textContent = "Apparently You're Still Strangers";
+    resultsMessage.textContent = "Good thing you have plenty of questions left to figure each other out.";
+  }
+
+  resultsPercentage.textContent = `${percentage}%`;
+
+  resultsPlayerOneName.textContent = players.one;
+  resultsPlayerTwoName.textContent = players.two;
+
+  const playerOnePossible = answeredCounts.one * 3;
+  const playerTwoPossible = answeredCounts.two * 3;
+
+  const playerOnePercentage = playerOnePossible
+    ? Math.round((scores.one / playerOnePossible) * 100)
+    : 0;
+
+  const playerTwoPercentage = playerTwoPossible
+    ? Math.round((scores.two / playerTwoPossible) * 100)
+    : 0;
+
+  resultsPlayerOneScore.textContent = `${playerOnePercentage}%`;
+  resultsPlayerTwoScore.textContent = `${playerTwoPercentage}%`;
+
+  showScreen(resultsScreen);
 }
 
 function renderLearned() {
@@ -388,6 +469,14 @@ accuracyButtons.forEach(button => {
 });
 
 nextQuestionButton.addEventListener("click", nextQuestion);
+
+resultsContinueButton.addEventListener("click", () => {
+  showScreen(categoryScreen);
+});
+
+resultsHomeButton.addEventListener("click", () => {
+  showScreen(homeScreen);
+});
 
 loadQuestions();
 
