@@ -60,6 +60,11 @@
       </div>
 
       <div class="game-content">
+        <div class="score-display">
+          <span>KNOW EACH OTHER</span>
+          <strong id="scoreDisplay">0%</strong>
+        </div>
+
         <div id="turnLabel" class="turn-label"></div>
         <div id="categoryLabel" class="category-label"></div>
 
@@ -128,6 +133,30 @@
             <button id="nextQuestionButton" class="primary-button">NEXT QUESTION</button>
           </div>
         </div>
+      </div>
+    </section>
+
+    <section id="resultsScreen" class="screen">
+      <div class="results-content">
+        <div class="results-label">YOUR RESULTS</div>
+        <h1 id="resultsTitle"></h1>
+        <div id="resultsPercentage" class="results-percentage"></div>
+        <p id="resultsMessage" class="results-message"></p>
+
+        <div class="results-breakdown">
+          <div>
+            <span id="resultsPlayerOneName"></span>
+            <strong id="resultsPlayerOneScore"></strong>
+          </div>
+
+          <div>
+            <span id="resultsPlayerTwoName"></span>
+            <strong id="resultsPlayerTwoScore"></strong>
+          </div>
+        </div>
+
+        <button id="resultsContinueButton" class="primary-button">CHOOSE ANOTHER CATEGORY</button>
+        <button id="resultsHomeButton" class="secondary-button">BACK TO HOME</button>
       </div>
     </section>
 
