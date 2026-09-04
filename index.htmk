@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#17121f">
+  <meta name="description" content="A relationship discovery game for couples who want to know each other better.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="stylesheet" href="style.css">
+  <title>Between Us</title>
+</head>
+<body>
+  <main id="app">
+    <section id="homeScreen" class="screen active">
+      <div class="hero">
+        <div class="logo">BETWEEN US</div>
+        <p class="tagline">16 years together.<br>Still things to discover.</p>
+      </div>
+
+      <div class="home-buttons">
+        <button id="playButton" class="primary-button">PLAY</button>
+        <button id="learnedButton" class="secondary-button">THINGS I'VE LEARNED</button>
+      </div>
+    </section>
+
+    <section id="categoryScreen" class="screen">
+      <button id="categoryBackButton" class="back-button">← Back</button>
+
+      <div class="screen-heading">
+        <h1>Choose Your Game</h1>
+        <p>Pick a category and see how well you really know each other.</p>
+      </div>
+
+      <div id="categoryGrid" class="category-grid"></div>
+    </section>
+
+    <section id="gameScreen" class="screen">
+      <div class="game-top">
+        <button id="gameBackButton" class="back-button">← Back</button>
+        <div id="questionCounter" class="question-counter"></div>
+      </div>
+
+      <div class="game-content">
+        <div id="categoryLabel" class="category-label"></div>
+
+        <div class="question-card">
+          <div id="difficultyLabel" class="difficulty-label"></div>
+          <h2 id="questionText"></h2>
+        </div>
+
+        <div class="answer-area">
+          <p class="instruction">Take a moment. Guess what your partner would say.</p>
+
+          <textarea
+            id="answerInput"
+            placeholder="Type your answer..."
+            maxlength="500"
+          ></textarea>
+
+          <button id="revealButton" class="primary-button">REVEAL</button>
+        </div>
+
+        <div id="revealArea" class="reveal-area hidden">
+          <div class="reveal-title">Now reveal their answer.</div>
+
+          <textarea
+            id="partnerAnswerInput"
+            placeholder="Enter their actual answer..."
+            maxlength="500"
+          ></textarea>
+
+          <button id="submitAnswerButton" class="primary-button">CONTINUE</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="learnedScreen" class="screen">
+      <button id="learnedBackButton" class="back-button">← Back</button>
+
+      <div class="screen-heading">
+        <h1>Things I've Learned</h1>
+        <p>The little things you've discovered about each other.</p>
+      </div>
+
+      <div id="learnedList" class="learned-list"></div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
