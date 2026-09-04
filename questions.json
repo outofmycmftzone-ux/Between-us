@@ -76,8 +76,8 @@
   {"id":131,"category":"Deep Cuts & Memories","difficulty":5,"question":"What's something you think I remember emotionally even if I don't remember the actual details?"},
   {"id":132,"category":"Deep Cuts & Memories","difficulty":4,"question":"What's something about the person I was when we met that you think would surprise the person I am now?"},
   {"id":133,"category":"Deep Cuts & Memories","difficulty":3,"question":"What's an old inside joke that you think perfectly represents us?"},
-  {"id":134,"category":"Deep Cuts & Memories","difficulty":5,"question":"What's a difficult period we've gone through that you think ultimately made us closer?"},
-
+  {"id":134,"category":"Deep Cuts & Memories","difficulty":5,"question":"What's a difficult period we've gone through that you think ultimately made us closer?"}
+  ,
   {"id":23,"category":"What Would I Do?","difficulty":2,"question":"If I suddenly had an entire day with absolutely no responsibilities, how do you think I'd actually spend it?"},
   {"id":24,"category":"What Would I Do?","difficulty":3,"question":"If we suddenly received $10,000 but had to spend it within 48 hours, what would I want to do with it?"},
   {"id":25,"category":"What Would I Do?","difficulty":2,"question":"If we were offered a completely free trip anywhere tomorrow, where would I choose?"},
@@ -127,9 +127,8 @@
   {"id":167,"category":"You Know Me Better Than I Know Myself","difficulty":5,"question":"What's something about myself that you think I have completely underestimated?"},
   {"id":168,"category":"You Know Me Better Than I Know Myself","difficulty":4,"question":"What's something you think I have become better at emotionally over the years?"},
   {"id":169,"category":"You Know Me Better Than I Know Myself","difficulty":5,"question":"What's something you think I am afraid to admit has changed about me?"},
-  {"id":170,"category":"You Know Me Better Than I Know Myself","difficulty":5,"question":"What's one truth about me that you think I would resist hearing from anyone except you?"}
-]
-[
+  {"id":170,"category":"You Know Me Better Than I Know Myself","difficulty":5,"question":"What's one truth about me that you think I would resist hearing from anyone except you?"},
+
   {"id":36,"category":"The Little Things","difficulty":1,"question":"What's something you could do on an ordinary Tuesday that would make me unusually happy?"},
   {"id":37,"category":"The Little Things","difficulty":3,"question":"What's something I almost never ask for directly but clearly appreciate when someone does it?"},
   {"id":38,"category":"The Little Things","difficulty":2,"question":"What's something that instantly makes a place feel comfortable to me?"},
@@ -174,8 +173,8 @@
   {"id":198,"category":"Before Us","difficulty":4,"question":"What's a lesson about trust that you think I learned before we met?"},
   {"id":199,"category":"Before Us","difficulty":5,"question":"What's something you think I brought into our relationship that came from being disappointed before?"},
   {"id":200,"category":"Before Us","difficulty":4,"question":"What's something about relationships that I understand now that I couldn't have understood when I was younger?"},
-  {"id":201,"category":"Before Us","difficulty":5,"question":"What's something about my past that you think helped shape the way I love people now?"},
-
+  {"id":201,"category":"Before Us","difficulty":5,"question":"What's something about my past that you think helped shape the way I love people now?"}
+  ,
   {"id":49,"category":"Intimacy","difficulty":3,"question":"When do you think I find you most attractive when you're not trying to be?"},
   {"id":50,"category":"Intimacy","difficulty":3,"question":"What's something you do that makes me feel particularly desired?"},
   {"id":51,"category":"Intimacy","difficulty":3,"question":"What's something non-sexual that you think I find surprisingly attractive about you?"},
@@ -220,11 +219,9 @@
   {"id":229,"category":"Spicy","difficulty":5,"question":"What's something you think I would be more open to discussing than actually trying?"},
   {"id":230,"category":"Spicy","difficulty":4,"question":"What's something about you that I think has become more attractive to me over time?"},
   {"id":231,"category":"Spicy","difficulty":5,"question":"What's something you think I would find incredibly intimate but also a little intimidating?"},
-  {"id":232,"category":"Spicy","difficulty":5,"question":"What's something you think I would want to hear from you during an intimate moment?"},
-  {"id":233,"category":"Spicy","difficulty":5,"question":"What's something you think becomes more exciting when we don't talk about it beforehand?"},
-  {"id":234,"category":"Spicy","difficulty":5,"question":"What's something about our chemistry that you think neither of us could have predicted when we first met?"}
-]
-[
+  {"id":232,"category":"Spicy","difficulty":5,"question":"What's something you think becomes more exciting when we don't talk about it beforehand?"},
+  {"id":233,"category":"Spicy","difficulty":5,"question":"What's something about our chemistry that you think neither of us could have predicted when we first met?"},
+
   {"id":62,"category":"Our Future","difficulty":3,"question":"What's something you think I'd love for us to experience together someday?"},
   {"id":63,"category":"Our Future","difficulty":4,"question":"What kind of couple do you think I want us to become as we get older?"},
   {"id":64,"category":"Our Future","difficulty":3,"question":"What's something you think I want our life to have more of in the future?"},
