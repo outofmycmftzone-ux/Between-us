@@ -1,0 +1,482 @@
+[
+  {
+    "id": 1,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 1,
+    "question": "What's something I complain about that you think I'd actually miss if it disappeared?"
+  },
+  {
+    "id": 2,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 2,
+    "question": "What's something I tend to overthink long after everyone else has forgotten about it?"
+  },
+  {
+    "id": 3,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 2,
+    "question": "What's something I say I'm going to do later that almost never happens later?"
+  },
+  {
+    "id": 4,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 3,
+    "question": "What's something I care about more than I usually admit?"
+  },
+  {
+    "id": 5,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 3,
+    "question": "What's something I would probably spend money on even if I knew I shouldn't?"
+  },
+  {
+    "id": 6,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 4,
+    "question": "What's something you think I have completely changed my mind about over the years?"
+  },
+  {
+    "id": 7,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 4,
+    "question": "What's something you think I secretly want validation for?"
+  },
+  {
+    "id": 8,
+    "category": "How Well Do You Know Me?",
+    "difficulty": 5,
+    "question": "What's something about myself that you think I misunderstand?"
+  },
+  {
+    "id": 9,
+    "category": "You've Been Watching Me",
+    "difficulty": 1,
+    "question": "What's usually the first thing I do when I get home?"
+  },
+  {
+    "id": 10,
+    "category": "You've Been Watching Me",
+    "difficulty": 2,
+    "question": "What's a facial expression I make that I probably don't realize I make?"
+  },
+  {
+    "id": 11,
+    "category": "You've Been Watching Me",
+    "difficulty": 2,
+    "question": "What's something I do differently when I'm genuinely excited compared with when I'm pretending to be excited?"
+  },
+  {
+    "id": 12,
+    "category": "You've Been Watching Me",
+    "difficulty": 3,
+    "question": "When I'm pretending I'm fine, what's usually the giveaway?"
+  },
+  {
+    "id": 13,
+    "category": "You've Been Watching Me",
+    "difficulty": 3,
+    "question": "What's a tiny inconvenience that annoys me way more than it reasonably should?"
+  },
+  {
+    "id": 14,
+    "category": "You've Been Watching Me",
+    "difficulty": 4,
+    "question": "What's something I do when I'm uncomfortable around people that I probably don't notice?"
+  },
+  {
+    "id": 15,
+    "category": "You've Been Watching Me",
+    "difficulty": 5,
+    "question": "What's a subtle sign that tells you I'm mentally checked out of a conversation?"
+  },
+  {
+    "id": 16,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 2,
+    "question": "What's one completely insignificant day from our relationship that you think I remember better than you do?"
+  },
+  {
+    "id": 17,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 2,
+    "question": "What's something we used to do together that we haven't done in years?"
+  },
+  {
+    "id": 18,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 3,
+    "question": "What's one of the strangest situations we've ever found ourselves in together?"
+  },
+  {
+    "id": 19,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 3,
+    "question": "What's a period in our relationship when you think we were happiest without realizing it at the time?"
+  },
+  {
+    "id": 20,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 4,
+    "question": "What's something about the beginning of our relationship that you think I remember differently than you?"
+  },
+  {
+    "id": 21,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 4,
+    "question": "What's a random place we've been together that you think has more meaning to me than you'd expect?"
+  },
+  {
+    "id": 22,
+    "category": "Deep Cuts & Memories",
+    "difficulty": 5,
+    "question": "What's a tiny moment between us that you think I completely forgot but you still remember?"
+  },
+  {
+    "id": 23,
+    "category": "What Would I Do?",
+    "difficulty": 1,
+    "question": "If I suddenly had an entire day with absolutely no responsibilities, how do you think I'd actually spend it?"
+  },
+  {
+    "id": 24,
+    "category": "What Would I Do?",
+    "difficulty": 2,
+    "question": "If we suddenly received $10,000 but had to spend it within 48 hours, what would I want to do with it?"
+  },
+  {
+    "id": 25,
+    "category": "What Would I Do?",
+    "difficulty": 2,
+    "question": "If we were offered a completely free trip anywhere tomorrow, where would I choose?"
+  },
+  {
+    "id": 26,
+    "category": "What Would I Do?",
+    "difficulty": 3,
+    "question": "If I had to give up one modern convenience for a year, which one would bother me the most?"
+  },
+  {
+    "id": 27,
+    "category": "What Would I Do?",
+    "difficulty": 3,
+    "question": "If someone gave me $500 and told me I couldn't spend it on myself, what would I probably buy?"
+  },
+  {
+    "id": 28,
+    "category": "What Would I Do?",
+    "difficulty": 4,
+    "question": "If I had to move somewhere completely unfamiliar tomorrow, what would be the first thing I'd worry about?"
+  },
+  {
+    "id": 29,
+    "category": "What Would I Do?",
+    "difficulty": 5,
+    "question": "If I could instantly become extremely good at one completely new skill, what would I choose?"
+  },
+  {
+    "id": 30,
+    "category": "You Know Me Better Than I Know Myself",
+    "difficulty": 2,
+    "question": "What's a quality I have that you think I don't recognize in myself?"
+  },
+  {
+    "id": 31,
+    "category": "You Know Me Better Than I Know Myself",
+    "difficulty": 3,
+    "question": "What's something you think I would be genuinely hurt by even if I acted like I didn't care?"
+  },
+  {
+    "id": 32,
+    "category": "You Know Me Better Than I Know Myself",
+    "difficulty": 3,
+    "question": "What's something you think I need more of in my life right now?"
+  },
+  {
+    "id": 33,
+    "category": "You Know Me Better Than I Know Myself",
+    "difficulty": 4,
+    "question": "What's something you think I avoid because admitting I want it would make me feel vulnerable?"
+  },
+  {
+    "id": 34,
+    "category": "You Know Me Better Than I Know Myself",
+    "difficulty": 4,
+    "question": "What's something you think I pretend doesn't bother me?"
+  },
+  {
+    "id": 35,
+    "category": "You Know Me Better Than I Know Myself",
+    "difficulty": 5,
+    "question": "What's something you think I'm afraid of becoming?"
+  },
+  {
+    "id": 36,
+    "category": "The Little Things",
+    "difficulty": 1,
+    "question": "What's something you could do on an ordinary Tuesday that would make me unusually happy?"
+  },
+  {
+    "id": 37,
+    "category": "The Little Things",
+    "difficulty": 2,
+    "question": "What's something I almost never ask for directly but clearly appreciate when someone does it?"
+  },
+  {
+    "id": 38,
+    "category": "The Little Things",
+    "difficulty": 2,
+    "question": "What's something that instantly makes a place feel comfortable to me?"
+  },
+  {
+    "id": 39,
+    "category": "The Little Things",
+    "difficulty": 3,
+    "question": "What's something small that can completely improve my mood?"
+  },
+  {
+    "id": 40,
+    "category": "The Little Things",
+    "difficulty": 4,
+    "question": "What's something I enjoy more when nobody makes a big deal about it?"
+  },
+  {
+    "id": 41,
+    "category": "The Little Things",
+    "difficulty": 5,
+    "question": "What's something you do that I appreciate far more than I probably realize?"
+  },
+  {
+    "id": 42,
+    "category": "Before Us",
+    "difficulty": 2,
+    "question": "What's something I learned from a past relationship that changed how I approach ours?"
+  },
+  {
+    "id": 43,
+    "category": "Before Us",
+    "difficulty": 3,
+    "question": "What's a relationship habit you think I brought into ours without realizing it?"
+  },
+  {
+    "id": 44,
+    "category": "Before Us",
+    "difficulty": 3,
+    "question": "What's something I tolerated in a previous relationship that I absolutely wouldn't tolerate now?"
+  },
+  {
+    "id": 45,
+    "category": "Before Us",
+    "difficulty": 4,
+    "question": "Was there something about a past relationship that changed what I wanted from a partner?"
+  },
+  {
+    "id": 46,
+    "category": "Before Us",
+    "difficulty": 4,
+    "question": "What's something about my younger self's idea of love that you think I no longer believe?"
+  },
+  {
+    "id": 47,
+    "category": "Before Us",
+    "difficulty": 5,
+    "question": "What's something from my dating history that you think would genuinely surprise you if you knew the full story?"
+  },
+  {
+    "id": 48,
+    "category": "Before Us",
+    "difficulty": 5,
+    "question": "What's something you think a previous partner understood about me differently than you do?"
+  },
+  {
+    "id": 49,
+    "category": "Intimacy",
+    "difficulty": 1,
+    "question": "When do you think I find you most attractive when you're not trying to be?"
+  },
+  {
+    "id": 50,
+    "category": "Intimacy",
+    "difficulty": 2,
+    "question": "What's something you do that makes me feel particularly desired?"
+  },
+  {
+    "id": 51,
+    "category": "Intimacy",
+    "difficulty": 2,
+    "question": "What's something non-sexual that you think I find surprisingly attractive about you?"
+  },
+  {
+    "id": 52,
+    "category": "Intimacy",
+    "difficulty": 3,
+    "question": "What's something that creates sexual tension between us without either of us saying anything?"
+  },
+  {
+    "id": 53,
+    "category": "Intimacy",
+    "difficulty": 3,
+    "question": "What's something about intimacy that you think I've become more comfortable with as we've gotten older?"
+  },
+  {
+    "id": 54,
+    "category": "Intimacy",
+    "difficulty": 4,
+    "question": "What's something you think I would like us to make more time for?"
+  },
+  {
+    "id": 55,
+    "category": "Intimacy",
+    "difficulty": 5,
+    "question": "What's something you think I would never admit was a turn-on?"
+  },
+  {
+    "id": 56,
+    "category": "Spicy",
+    "difficulty": 2,
+    "question": "What's something you think I find more exciting now than I did when we first got together?"
+  },
+  {
+    "id": 57,
+    "category": "Spicy",
+    "difficulty": 3,
+    "question": "What's something you think I would be curious to try together but might be hesitant to suggest first?"
+  },
+  {
+    "id": 58,
+    "category": "Spicy",
+    "difficulty": 3,
+    "question": "What's something about you that you think I find especially tempting?"
+  },
+  {
+    "id": 59,
+    "category": "Spicy",
+    "difficulty": 4,
+    "question": "What's a fantasy or curiosity you think I'd be genuinely surprised to hear you have?"
+  },
+  {
+    "id": 60,
+    "category": "Spicy",
+    "difficulty": 4,
+    "question": "What's something that could instantly change an ordinary evening between us into something more intimate?"
+  },
+  {
+    "id": 61,
+    "category": "Spicy",
+    "difficulty": 5,
+    "question": "What's something you think I've wanted to try but never actually said out loud?"
+  },
+  {
+    "id": 62,
+    "category": "Our Future",
+    "difficulty": 1,
+    "question": "What's something you think I'd love for us to experience together someday?"
+  },
+  {
+    "id": 63,
+    "category": "Our Future",
+    "difficulty": 2,
+    "question": "What kind of couple do you think I want us to become as we get older?"
+  },
+  {
+    "id": 64,
+    "category": "Our Future",
+    "difficulty": 3,
+    "question": "What's something you think I want our life to have more of in the future?"
+  },
+  {
+    "id": 65,
+    "category": "Our Future",
+    "difficulty": 3,
+    "question": "What's somewhere you think I'd genuinely love to live for a year if circumstances allowed it?"
+  },
+  {
+    "id": 66,
+    "category": "Our Future",
+    "difficulty": 4,
+    "question": "What's one thing you think I'd regret if we never experienced it together?"
+  },
+  {
+    "id": 67,
+    "category": "Our Future",
+    "difficulty": 5,
+    "question": "What's something about our future that you think I'm quietly more excited about than I let on?"
+  },
+  {
+    "id": 68,
+    "category": "Us Being Us",
+    "difficulty": 1,
+    "question": "What's the most ridiculous thing I would probably spend an unreasonable amount of money on?"
+  },
+  {
+    "id": 69,
+    "category": "Us Being Us",
+    "difficulty": 2,
+    "question": "If I were arrested, what would you assume I had done?"
+  },
+  {
+    "id": 70,
+    "category": "Us Being Us",
+    "difficulty": 2,
+    "question": "What's an irrational opinion I have that I've defended way too passionately?"
+  },
+  {
+    "id": 71,
+    "category": "Us Being Us",
+    "difficulty": 3,
+    "question": "What's something I do that would probably drive someone else crazy but you've learned to find funny?"
+  },
+  {
+    "id": 72,
+    "category": "Us Being Us",
+    "difficulty": 3,
+    "question": "If our relationship had a warning label, what would it say?"
+  },
+  {
+    "id": 73,
+    "category": "Us Being Us",
+    "difficulty": 4,
+    "question": "If someone secretly followed us around for a week, what weird thing would they learn we do all the time?"
+  },
+  {
+    "id": 74,
+    "category": "Us Being Us",
+    "difficulty": 5,
+    "question": "What's something completely ordinary about our relationship that you think we'd both be shocked to realize we might actually miss someday?"
+  },
+  {
+    "id": 75,
+    "category": "Conversation",
+    "difficulty": 2,
+    "question": "What's something you've wondered about me but never actually asked?"
+  },
+  {
+    "id": 76,
+    "category": "Conversation",
+    "difficulty": 3,
+    "question": "What's something you think I wish you asked me about more often?"
+  },
+  {
+    "id": 77,
+    "category": "Conversation",
+    "difficulty": 3,
+    "question": "What's something about me that you understand now that took you years to figure out?"
+  },
+  {
+    "id": 78,
+    "category": "Conversation",
+    "difficulty": 4,
+    "question": "What's something you think we've stopped talking about that we probably shouldn't have?"
+  },
+  {
+    "id": 79,
+    "category": "Conversation",
+    "difficulty": 4,
+    "question": "What's something you've changed your opinion about since being with me?"
+  },
+  {
+    "id": 80,
+    "category": "Conversation",
+    "difficulty": 5,
+    "question": "What's one question you wish I would ask you more often?"
+  }
+]
