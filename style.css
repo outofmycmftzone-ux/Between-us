@@ -247,7 +247,33 @@ button:disabled {
   width: 100%;
   max-width: 760px;
   margin: auto;
-  padding: 30px 0;
+  padding: 20px 0 30px;
+}
+
+.score-display {
+  width: 100%;
+  max-width: 240px;
+  margin: 0 auto 20px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.score-display span {
+  color: var(--muted);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.score-display strong {
+  color: var(--accent);
+  font-size: 1rem;
 }
 
 .turn-label {
@@ -442,6 +468,75 @@ textarea:focus {
   margin-top: 0;
 }
 
+.results-content {
+  width: 100%;
+  max-width: 520px;
+  margin: auto;
+  text-align: center;
+  padding: 30px 0;
+}
+
+.results-label {
+  color: var(--accent);
+  font-size: 0.75rem;
+  font-weight: 900;
+  letter-spacing: 0.18em;
+  margin-bottom: 18px;
+}
+
+.results-content h1 {
+  font-size: clamp(2rem, 8vw, 3rem);
+  line-height: 1.2;
+}
+
+.results-percentage {
+  margin: 28px 0 16px;
+  font-size: clamp(4rem, 20vw, 7rem);
+  line-height: 1;
+  font-weight: 900;
+  color: var(--accent);
+  text-shadow: 0 10px 40px rgba(217, 138, 199, 0.2);
+}
+
+.results-message {
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+
+.results-breakdown {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.results-breakdown div {
+  padding: 18px;
+  border-radius: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+}
+
+.results-breakdown span {
+  display: block;
+  color: var(--muted);
+  font-size: 0.8rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  word-break: break-word;
+}
+
+.results-breakdown strong {
+  display: block;
+  color: var(--accent);
+  font-size: 1.6rem;
+}
+
+.results-content .secondary-button {
+  margin-top: 10px;
+}
+
 .hidden {
   display: none;
 }
@@ -497,6 +592,10 @@ textarea:focus {
   }
 
   .accuracy-buttons {
+    grid-template-columns: 1fr;
+  }
+
+  .results-breakdown {
     grid-template-columns: 1fr;
   }
 }
