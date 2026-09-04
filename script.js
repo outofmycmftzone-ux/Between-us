@@ -82,6 +82,7 @@ let answeredCounts = {
 
 let totalPoints = 0;
 let possiblePoints = 0;
+let resultSavedForQuestion = false;
 
 const categoryInfo = {
   "How Well Do You Know Me?": { icon: "🧠" },
@@ -202,6 +203,22 @@ function updateScoreDisplay() {
   scoreDisplay.textContent = `${percentage}%`;
 }
 
+function resetQuestionState() {
+  resultSavedForQuestion = false;
+
+  accuracyButtons.forEach(button => {
+    button.disabled = false;
+  });
+
+  discussionArea.classList.add("hidden");
+
+  answerInput.disabled = false;
+  lockAnswerButton.disabled = false;
+
+  guessInput.disabled = false;
+  revealButton.disabled = false;
+}
+
 function showQuestion() {
   currentQuestion = currentQuestions[currentQuestionIndex];
 
@@ -212,6 +229,8 @@ function showQuestion() {
 
   const answerer = getPlayerName(answeringPlayer);
   const guesser = getPlayerName(guessingPlayer);
+
+  resetQuestionState();
 
   turnLabel.textContent = `${answerer}'S TURN`;
   categoryLabel.textContent = currentQuestion.category;
@@ -230,16 +249,6 @@ function showQuestion() {
   answerStage.classList.remove("hidden");
   guessStage.classList.add("hidden");
   revealStage.classList.add("hidden");
-  discussionArea.classList.add("hidden");
-
-  answerInput.disabled = false;
-  lockAnswerButton.disabled = false;
-  guessInput.disabled = false;
-  revealButton.disabled = false;
-
-  accuracyButtons.forEach(button => {
-    button.disabled = false;
-  });
 
   updateScoreDisplay();
 
@@ -276,15 +285,23 @@ function revealAnswers() {
   partnerGuess.textContent = guessInput.value.trim();
 
   discussionArea.classList.add("hidden");
+
+  accuracyButtons.forEach(button => {
+    button.disabled = false;
+  });
 }
 
 function saveResult(score) {
-  const answererKey = getPlayerKey(answeringPlayer);
+  if (resultSavedForQuestion) {
+    return;
+  }
+
+  resultSavedForQuestion = true;
+
   const guesserKey = getPlayerKey(guessingPlayer);
 
   scores[guesserKey] += score;
   answeredCounts[guesserKey]++;
-
   totalPoints += score;
 
   const learned = JSON.parse(localStorage.getItem("betweenUsLearned") || "[]");
