@@ -14,12 +14,31 @@
     <section id="homeScreen" class="screen active">
       <div class="hero">
         <div class="logo">BETWEEN US</div>
-        <p class="tagline">16 years together.<br>Still things to discover.</p>
+        <p class="tagline">You know each other.<br>But how well?</p>
       </div>
 
       <div class="home-buttons">
         <button id="playButton" class="primary-button">PLAY</button>
         <button id="learnedButton" class="secondary-button">THINGS I'VE LEARNED</button>
+      </div>
+    </section>
+
+    <section id="setupScreen" class="screen">
+      <button id="setupBackButton" class="back-button">← Back</button>
+
+      <div class="screen-heading">
+        <h1>Who's Playing?</h1>
+        <p>Enter both names. You'll take turns answering and guessing.</p>
+      </div>
+
+      <div class="setup-form">
+        <label for="playerOneInput">Player 1</label>
+        <input id="playerOneInput" type="text" maxlength="30" placeholder="Enter your name">
+
+        <label for="playerTwoInput">Player 2</label>
+        <input id="playerTwoInput" type="text" maxlength="30" placeholder="Enter your partner's name">
+
+        <button id="startGameButton" class="primary-button">START GAME</button>
       </div>
     </section>
 
@@ -41,6 +60,7 @@
       </div>
 
       <div class="game-content">
+        <div id="turnLabel" class="turn-label"></div>
         <div id="categoryLabel" class="category-label"></div>
 
         <div class="question-card">
@@ -48,8 +68,8 @@
           <h2 id="questionText"></h2>
         </div>
 
-        <div class="answer-area">
-          <p class="instruction">Take a moment. Guess what your partner would say.</p>
+        <div id="answerStage" class="answer-stage">
+          <p id="answerInstruction" class="instruction"></p>
 
           <textarea
             id="answerInput"
@@ -57,19 +77,56 @@
             maxlength="500"
           ></textarea>
 
-          <button id="revealButton" class="primary-button">REVEAL</button>
+          <button id="lockAnswerButton" class="primary-button">LOCK IN & PASS PHONE</button>
         </div>
 
-        <div id="revealArea" class="reveal-area hidden">
-          <div class="reveal-title">Now reveal their answer.</div>
+        <div id="guessStage" class="answer-stage hidden">
+          <div class="pass-message">
+            <div class="pass-icon">📱</div>
+            <h3 id="guessPlayerLabel"></h3>
+            <p id="guessInstruction"></p>
+          </div>
 
           <textarea
-            id="partnerAnswerInput"
-            placeholder="Enter their actual answer..."
+            id="guessInput"
+            placeholder="What do you think they answered?"
             maxlength="500"
           ></textarea>
 
-          <button id="submitAnswerButton" class="primary-button">CONTINUE</button>
+          <button id="revealButton" class="primary-button">REVEAL</button>
+        </div>
+
+        <div id="revealStage" class="reveal-area hidden">
+          <div class="reveal-title">The Reveal</div>
+
+          <div class="answer-reveal">
+            <div class="answer-box">
+              <span id="answerPlayerName"></span>
+              <p id="originalAnswer"></p>
+            </div>
+
+            <div class="answer-box">
+              <span id="guessPlayerName"></span>
+              <p id="partnerGuess"></p>
+            </div>
+          </div>
+
+          <div class="accuracy-section">
+            <p>How close was the guess?</p>
+
+            <div class="accuracy-buttons">
+              <button class="accuracy-button" data-score="3">🎯 Nailed It</button>
+              <button class="accuracy-button" data-score="2">👀 Pretty Close</button>
+              <button class="accuracy-button" data-score="1">🤔 Not Quite</button>
+              <button class="accuracy-button" data-score="0">😂 Not Even Close</button>
+            </div>
+          </div>
+
+          <div id="discussionArea" class="discussion-area hidden">
+            <div class="discussion-prompt">💬 Now talk about it</div>
+            <p>What made you answer that way?</p>
+            <button id="nextQuestionButton" class="primary-button">NEXT QUESTION</button>
+          </div>
         </div>
       </div>
     </section>
