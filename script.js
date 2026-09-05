@@ -85,6 +85,7 @@ let possiblePoints = 0;
 let resultSavedForQuestion = false;
 
 const categoryInfo = {
+  "Free for All": { icon: "🎲" },
   "How Well Do You Know Me?": { icon: "🧠" },
   "You've Been Watching Me": { icon: "👀" },
   "Deep Cuts & Memories": { icon: "🕰️" },
@@ -106,6 +107,17 @@ const difficultyNames = {
   4: "Mind Reader",
   5: "You Really Know Me"
 };
+
+function shuffle(array) {
+  const shuffled = [...array];
+
+  for (let i = shuffled.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+  }
+
+  return shuffled;
+}
 
 function showScreen(screen) {
   [homeScreen, setupScreen, categoryScreen, gameScreen, resultsScreen, learnedScreen].forEach(item => {
@@ -140,12 +152,16 @@ function buildCategories() {
 
   const categories = [...new Set(questions.map(question => question.category))];
 
+  categories.unshift("Free for All");
+
   categories.forEach(category => {
     const info = categoryInfo[category] || {
       icon: "💭"
     };
 
-    const count = questions.filter(question => question.category === category).length;
+    const count = category === "Free for All"
+      ? questions.length
+      : questions.filter(question => question.category === category).length;
 
     const button = document.createElement("button");
     button.className = "category-button";
@@ -167,9 +183,13 @@ function buildCategories() {
 function startCategory(category) {
   selectedCategory = category;
 
-  currentQuestions = questions
-    .filter(question => question.category === category)
-    .sort(() => Math.random() - 0.5);
+  if (category === "Free for All") {
+    currentQuestions = shuffle(questions);
+  } else {
+    currentQuestions = shuffle(
+      questions.filter(question => question.category === category)
+    );
+  }
 
   currentQuestionIndex = 0;
 
@@ -327,7 +347,6 @@ function saveResult(score) {
 
   discussionArea.classList.remove("hidden");
 }
-
 function nextQuestion() {
   currentQuestionIndex++;
 
