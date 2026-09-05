@@ -3,6 +3,7 @@
   "short_name": "Between Us",
   "description": "A relationship discovery game for couples who want to know each other better.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#100c14",
   "theme_color": "#17121f",
